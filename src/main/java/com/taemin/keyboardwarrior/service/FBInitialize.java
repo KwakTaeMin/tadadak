@@ -1,11 +1,14 @@
 package com.taemin.keyboardwarrior.service;
+import java.io.FileInputStream;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.stereotype.Service;
+
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
-import java.io.FileInputStream;
 
 @Service
 public class FBInitialize {
@@ -13,18 +16,37 @@ public class FBInitialize {
     @PostConstruct
     public void initialize() {
         try {
-            FileInputStream serviceAccount =
-                    new FileInputStream("./serviceaccount.json");
+			FileInputStream serviceAccount =
+			  new FileInputStream("./keyboard-warriors-c07cb-firebase-adminsdk-ztupf-cc18070b17.json");
+			
+			FirebaseApp firebaseApp = null;
+			List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+			 
+			if(firebaseApps != null && !firebaseApps.isEmpty()){
+			             
+			    for(FirebaseApp app : firebaseApps){
+			        if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME)) {
+			            firebaseApp = app;
+			        }
+			    }
+			             
+			}else{
+			    FirebaseOptions options = new FirebaseOptions.Builder()
+			        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+			        .setDatabaseUrl("https://keyboard-warriors-c07cb.firebaseio.com")
+			        .build();
+			    firebaseApp = FirebaseApp.initializeApp(options);              
+			}
 
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://keyboard-warriors-c07cb.firebaseio.com/")
-                    .build();
 
-            FirebaseApp.initializeApp(options);
+			
+			
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        
+        
 
     }
 }
