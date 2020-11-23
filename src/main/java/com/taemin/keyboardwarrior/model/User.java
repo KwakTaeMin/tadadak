@@ -2,14 +2,16 @@ package com.taemin.keyboardwarrior.model;
 
 import java.util.Date;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+@IgnoreExtraProperties
 public class User {
 
 	private String authenticationCode;
 	private String nickName;
-	private Date createDate;
+	private Long createDate;
 	
 	
-	public User(String authenticationCode, String nickName, Date createDate) {
+	public User(String authenticationCode, String nickName, Long createDate) {
 		super();
 		this.authenticationCode = authenticationCode;
 		this.nickName = nickName;
@@ -27,12 +29,13 @@ public class User {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-	public Date getCreateDate() {
+	public Long getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Long createDate) {
 		this.createDate = createDate;
 	}
+	
 	
 	
 }
