@@ -13,9 +13,11 @@ import com.google.firebase.FirebaseOptions;
 @Service
 public class FBInitialize {
 
+	
     @PostConstruct
     public void initialize() {
         try {
+        	/*
 			FileInputStream serviceAccount =
 			  new FileInputStream("./keyboard-warriors-c07cb-firebase-adminsdk-ztupf-cc18070b17.json");
 			
@@ -37,7 +39,7 @@ public class FBInitialize {
 			        .build();
 			    firebaseApp = FirebaseApp.initializeApp(options);              
 			}
-
+			*/
 
 			
 			

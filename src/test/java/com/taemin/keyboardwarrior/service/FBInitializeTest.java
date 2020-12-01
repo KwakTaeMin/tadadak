@@ -1,4 +1,6 @@
-package com.taemin.keyboardwarrior;
+package com.taemin.keyboardwarrior.service;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
@@ -14,7 +16,7 @@ import com.taemin.keyboardwarrior.model.User;
 import com.taemin.keyboardwarrior.service.FBInitialize;
 
 @SpringBootTest
-class KeyboardwarriorApplicationTests {
+class FBInitializeTest {
 
 	@DisplayName("파이어베이스 유저 데이터 저장 테스트")
 	@Test
@@ -22,21 +24,20 @@ class KeyboardwarriorApplicationTests {
 		FBInitialize fbInitialize = new FBInitialize();
 		fbInitialize.initialize();
 		DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-		User user = new User("code" , "taminging", new Date().getTime());
+		User user = new User();
 		ApiFuture<Void> a =  databaseReference.child("users").child("taemin").setValueAsync(user);
 		ApiFuture<Void> b =  databaseReference.child("users").child("youngjun").setValueAsync(user);
 
 		try {
 			a.get();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail(e.getMessage());
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
 		
-		//databaseReference.push();
 	}
 	
 	@DisplayName("파이어베이스 유저 데이터 삭제 테스트")
@@ -48,11 +49,11 @@ class KeyboardwarriorApplicationTests {
 		try {
 			databaseReference.child("users").child("youngjun").removeValueAsync().get();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail(e.getMessage());
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
 		
 	}
@@ -63,7 +64,6 @@ class KeyboardwarriorApplicationTests {
 		FBInitialize fbInitialize = new FBInitialize();
 		fbInitialize.initialize();
 		DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-		//databaseReference.child("users").child("taemin").
 	}
 
 }
