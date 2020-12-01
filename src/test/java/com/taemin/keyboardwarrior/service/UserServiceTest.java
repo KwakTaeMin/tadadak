@@ -1,6 +1,5 @@
 package com.taemin.keyboardwarrior.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -15,20 +14,20 @@ import com.taemin.keyboardwarrior.service.impl.IUserService;
 public class UserServiceTest {
 
 	@Autowired
-	IUserService userService;
+	private IUserService userService;
 	
 	@DisplayName("User 생성")
 	@Test
-	public void _createUser() {
+	public void createUser() {
 		User user = new User();
-		user.setId("taemin");
-		user.setNickName("곽태민");
+		user.setId("youngjun");
+		user.setNickName("이영준");
 		userService.createUser(user);
 	}
 	
 	@DisplayName("User 수정")
 	@Test
-	public void _modifyUser() {
+	public void modifyUser() {
 		User user = new User();
 		user.setId("taemin");
 		user.setNickName("곽태민2");
@@ -37,13 +36,13 @@ public class UserServiceTest {
 	
 	@DisplayName("User 전체 가져오기")
 	@Test
-	public void _getUsers() {
+	public void getUsers() {
 		List<User> users =  userService.getUsers();
 	}
 	
 	@DisplayName("User 가져오기 (특정 ID)")
 	@Test
-	public void _getUser() {
+	public void getUser() throws Exception {
 		User user = userService.getUser("taemin");
 	}
 }

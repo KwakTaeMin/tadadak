@@ -26,13 +26,22 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User getUser(String userID) {
-		return userRepository.findById(userID).get();
+	public User getUser(String userId) throws Exception {
+		User user = userRepository.findById(userId).get();
+		if(user == null)
+			throw new Exception(userId + " is not exist");
+		return user;
 	}
-
+	@Override
+	public void deleteUser(String userId) {
+		userRepository.deleteById(userId);
+		
+	}
 	@Override
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
+
+	
 
 }
