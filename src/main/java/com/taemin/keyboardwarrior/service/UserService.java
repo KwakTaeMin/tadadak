@@ -1,5 +1,7 @@
 package com.taemin.keyboardwarrior.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,23 @@ public class UserService implements IUserService {
 	private UserRepository userRepository;
 	
 	@Override
-	public void save(User user) {
-		userRepository.save(user);
+	public User createUser(User user) {
+		return userRepository.save(user);
+	}
+
+	@Override
+	public User modifyUser(User user) {
+		return userRepository.save(user);		
+	}
+
+	@Override
+	public User getUser(String userID) {
+		return userRepository.findById(userID).get();
+	}
+
+	@Override
+	public List<User> getUsers() {
+		return userRepository.findAll();
 	}
 
 }
