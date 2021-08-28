@@ -1,4 +1,4 @@
-package com.taemin.keyboardwarrior.user.domain;
+package com.taemin.tadadak.user.domain;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,6 @@
-package com.taemin.keyboardwarrior.user.domain;
+package com.taemin.tadadak.user.domain;
 
-import com.taemin.keyboardwarrior.user.exception.NickNameException;
+import com.taemin.tadadak.user.exception.NickNameException;
 
 public class NickName {
 

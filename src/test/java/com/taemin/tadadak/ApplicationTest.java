@@ -1,4 +1,4 @@
-package com.taemin.keyboardwarrior;
+package com.taemin.tadadak;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

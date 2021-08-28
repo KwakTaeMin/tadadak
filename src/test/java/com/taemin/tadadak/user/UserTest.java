@@ -1,9 +1,11 @@
-package com.taemin.keyboardwarrior.user;
+package com.taemin.tadadak.user;
+
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.taemin.keyboardwarrior.user.domain.NickName;
-import com.taemin.keyboardwarrior.user.domain.User;
+import com.taemin.tadadak.user.domain.NickName;
+import com.taemin.tadadak.user.domain.User;
 
 public class UserTest {
 

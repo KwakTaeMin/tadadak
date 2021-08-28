@@ -1,4 +1,4 @@
-package com.taemin.keyboardwarrior.user.exception;
+package com.taemin.tadadak.user.exception;
 
 public class NickNameException extends RuntimeException {
 
